@@ -24,5 +24,13 @@ namespace PSBrainfuck.Tests
             string result = bi.Interpret("++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.");
             Assert.AreEqual("Hello World!\n", result);
         }
+
+        [TestMethod]
+        public void TestHelloWorld2()
+        {
+            BrainfuckInterpreter bi = new BrainfuckInterpreter();
+            string result = bi.Interpret(">++++++++[<+++++++++>-]<.>>+>+>++>[-]+<[>[->+<<++++>]<<]>.+++++++..+++.>>+++++++.<<<[[-]<[-]>]<+++++++++++++++.>>.+++.------.--------.>>+.>++++.");
+            Assert.AreEqual("Hello World!\n", result);
+        }
     }
 }
