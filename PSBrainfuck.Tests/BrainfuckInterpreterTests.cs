@@ -8,7 +8,7 @@ namespace PSBrainfuck.Tests
     public class BrainfuckInterpreterTests
     {
 
-        [Fact]
+        [Fact(DisplayName = "Test empty string")]
         public void TestEmptyString()
         {
             BrainfuckInterpreter bi = new BrainfuckInterpreter();
@@ -16,20 +16,15 @@ namespace PSBrainfuck.Tests
             Assert.Equal("", result);
         }
 
-        [Fact]
-        public void TestHelloWorld()
+        [Theory(DisplayName = "Tests hello world")]
+        [InlineData("++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.")]
+        [InlineData(">++++++++[<+++++++++>-]<.>>+>+>++>[-]+<[>[->+<<++++>]<<]>.+++++++..+++.>>+++++++.<<<[[-]<[-]>]<+++++++++++++++.>>.+++.------.--------.>>+.>++++.")]
+        public void TestHelloWorld(string instructions)
         {
             BrainfuckInterpreter bi = new BrainfuckInterpreter();
-            string result = bi.Interpret("++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.");
+            string result = bi.Interpret(instructions);
             Assert.Equal("Hello World!\n", result);
         }
 
-        [Fact]
-        public void TestHelloWorld2()
-        {
-            BrainfuckInterpreter bi = new BrainfuckInterpreter();
-            string result = bi.Interpret(">++++++++[<+++++++++>-]<.>>+>+>++>[-]+<[>[->+<<++++>]<<]>.+++++++..+++.>>+++++++.<<<[[-]<[-]>]<+++++++++++++++.>>.+++.------.--------.>>+.>++++.");
-            Assert.Equal("Hello World!\n", result);
-        }
     }
 }
